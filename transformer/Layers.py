@@ -35,7 +35,7 @@ class DecoderLayer(nn.Module):
             self, dec_input, enc_output,
             slf_attn_mask=None, dec_enc_attn_mask=None):
         dec_output, dec_slf_attn = self.slf_attn(
-            dec_input, dec_input, dec_input, mask=slf_attn_mask)
+            dec_input, dec_input, dec_input, mask=slf_attn_mask)  ## nn.Module._call_impl replaced the default call function to self.forward
         dec_output, dec_enc_attn = self.enc_attn(
             dec_output, enc_output, enc_output, mask=dec_enc_attn_mask)
         dec_output = self.pos_ffn(dec_output)
